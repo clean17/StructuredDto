@@ -4,11 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class TestController {
+public class WhyController {
     
-    @GetMapping("/")
-    public String dd(){
-        
-    return "test";
+    @GetMapping("/why")
+    public String testdd(){
+    return "why";
     }
 }
