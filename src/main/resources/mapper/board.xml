@@ -4,6 +4,55 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="shop.mtcoding.transferdto.model.board.BoardRepository">
+    <resultMap id="boardDto" type="shop.mtcoding.transferdto.dto.BoardDto">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="createdAt" column="created_at"/>
+
+    </resultMap>
+    <resultMap id="userDto" type="shop.mtcoding.transferdto.dto.UserDto">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="email" column="email"/>
+        <result property="createdAt" column="created_at"/>
+    </resultMap>
+
+    <resultMap id="boardJoinUserDto" type="shop.mtcoding.transferdto.dto.BoardJoinUserDto">
+        <association property="board" resultMap="boardDto" />
+        <association property="user" resultMap="userDto" />
+        <!-- <collection property="boards" resultMap="boardDto" /> 컬렉션 리턴할 경우 -->
+    </resultMap>
+
+    <resultMap id="boardJoinUserDto2" type="shop.mtcoding.transferdto.dto.BoardJoinUserDto2">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="createdAt" column="created_at"/>
+        <association property="user" javaType="shop.mtcoding.transferdto.dto.BoardJoinUserDto2$UserDto">
+            <id property="id" column="id"/>
+            <result property="username" column="username"/>
+            <result property="password" column="password"/>
+            <result property="email" column="email"/>
+            <result property="createdAt" column="created_at"/>
+        </association>
+    </resultMap>
+
+    <select id="findByIdJoinUser2" resultMap="boardJoinUserDto">
+        select *
+          from board_tb b inner join user_tb u
+          ON b.user_id = u.id
+          WHERE b.id = #{id}
+    </select>
+
+    <select id="findByIdJoinUser3" resultMap="boardJoinUserDto2">
+        select *
+        from board_tb b inner join user_tb u
+        ON b.user_id = u.id
+        WHERE b.id = #{id}
+    </select>
+    
     <select id="findAll" resultType="shop.mtcoding.transferdto.model.board.Board">
         select * from board_tb
     </select>
@@ -13,18 +62,6 @@
     </select>
 
     <select id="findByIdJoinUser" resultType="shop.mtcoding.transferdto.dto.BoardDetailOutDto">
-        select b.*, 
-          u.id user_id, 
-          u.username user_username, 
-          u.password user_password, 
-          u.email user_email, 
-          u.created_at user_created_at
-          from board_tb b join user_tb u
-          on b.user_id = u.id
-          where b.id = #{id}
-    </select>
-
-    <select id="findByIdJoinUser2" resultType="shop.mtcoding.transferdto.dto.BoardDetailOutDto2">
         select b.*, 
           u.id user_id, 
           u.username user_username, 

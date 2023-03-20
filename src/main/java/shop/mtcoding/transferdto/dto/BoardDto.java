@@ -6,15 +6,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @Setter @ToString
-public class BoardDetailOutDto {
+@Getter @Setter
+public class BoardDto {
     private Integer id;
     private String title;
     private String content;
+    // private UserDto user;
     private Timestamp createdAt;
-    private Integer userId;
-    private String userUsername;
-    private String userPassword;
-    private String userEmail;
-    private Timestamp userCreatedAt;
 }

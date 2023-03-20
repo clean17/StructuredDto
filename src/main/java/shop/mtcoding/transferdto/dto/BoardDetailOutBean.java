@@ -7,14 +7,14 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter @Setter @ToString
-public class BoardDetailOutDto2 {
+public class BoardDetailOutBean {
     private Integer id;
     private String title;
     private String content;
     private UserDto user;
     private Timestamp createdAt;
 
-    public  BoardDetailOutDto2(BoardDetailOutDto board) {
+    public  BoardDetailOutBean(BoardDetailOutDto board) {
         this.id = board.getId();
         this.title = board.getTitle();
         this.content = board.getContent();
@@ -45,3 +45,5 @@ public class BoardDetailOutDto2 {
         }
     }
 }
+
+    
