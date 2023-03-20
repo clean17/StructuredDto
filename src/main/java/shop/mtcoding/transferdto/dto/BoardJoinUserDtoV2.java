@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class BoardJoinUserDto2 {
+public class BoardJoinUserDtoV2 {
     private Integer id;
     private String title;
     private String content;

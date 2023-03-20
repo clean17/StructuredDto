@@ -4,17 +4,16 @@ import java.sql.Timestamp;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
-@Getter @Setter @ToString
-public class BoardDetailOutBean {
+@Getter @Setter
+public class BoardDetailOutStructuredDto {
     private Integer id;
     private String title;
     private String content;
     private UserDto user;
     private Timestamp createdAt;
 
-    public  BoardDetailOutBean(BoardDetailOutDto board) {
+    public  BoardDetailOutStructuredDto(BoardDetailOutFlatDto board) {
         this.id = board.getId();
         this.title = board.getTitle();
         this.content = board.getContent();
@@ -28,7 +27,7 @@ public class BoardDetailOutBean {
         this.createdAt = board.getCreatedAt();
     }
 
-    @Getter @Setter @ToString
+    @Getter @Setter
     public class UserDto {
         private Integer id;
         private String username;
@@ -45,5 +44,3 @@ public class BoardDetailOutBean {
         }
     }
 }
-
-    

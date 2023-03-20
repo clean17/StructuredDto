@@ -4,8 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import shop.mtcoding.transferdto.dto.BoardJoinUserDto;
-import shop.mtcoding.transferdto.dto.BoardJoinUserDto2;
+import shop.mtcoding.transferdto.dto.BoardJoinUserDtoV2;
 import shop.mtcoding.transferdto.model.board.BoardRepository;
 
 @Service
@@ -15,13 +14,12 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     @Transactional
-    public BoardJoinUserDto2 게시글상세보기(Integer id) {
-        // BoardDetailOutDto boardDetailOutDto = boardRepository.findByIdJoinUser(id);
-        // BoardDetailOutDto2 boardDetailOutDto2 = new BoardDetailOutDto2(boardDetailOutDto);
-        // return boardDetailOutDto;
+    public BoardJoinUserDtoV2 게시글상세보기(Integer id) {
+        // BoardDetailOutFlatDto flatDto = boardRepository.findByIdJoinUser(id);
+        // BoardDetailOutStructuredDto dto = new BoardDetailOutStructuredDto(flatDto);
         // BoardJoinUserDto dto = boardRepository.findByIdJoinUser2(id);
-        BoardJoinUserDto2 dto = boardRepository.findByIdJoinUser3(id);
-        // BoardDetailOutDto2 boardDetailOutDto2 = new BoardDetailOutDto2(boardDetailOutDto);
+        BoardJoinUserDtoV2 dto = boardRepository.findByIdJoinUser3(id);
+        // BoardDetailOutStructuredDto boardDetailOutStructuredDto = new (boardDetailOutFlatDto);
         return dto;
     }
     

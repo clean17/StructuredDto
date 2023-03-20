@@ -22,15 +22,14 @@
     <resultMap id="boardJoinUserDto" type="shop.mtcoding.transferdto.dto.BoardJoinUserDto">
         <association property="board" resultMap="boardDto" />
         <association property="user" resultMap="userDto" />
-        <!-- <collection property="boards" resultMap="boardDto" /> 컬렉션 리턴할 경우 -->
     </resultMap>
 
-    <resultMap id="boardJoinUserDto2" type="shop.mtcoding.transferdto.dto.BoardJoinUserDto2">
+    <resultMap id="boardJoinUserDto2" type="shop.mtcoding.transferdto.dto.BoardJoinUserDtoV2">
         <id property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="content" column="content"/>
         <result property="createdAt" column="created_at"/>
-        <association property="user" javaType="shop.mtcoding.transferdto.dto.BoardJoinUserDto2$UserDto">
+        <association property="user" javaType="shop.mtcoding.transferdto.dto.BoardJoinUserDtoV2$UserDto">
             <id property="id" column="id"/>
             <result property="username" column="username"/>
             <result property="password" column="password"/>
@@ -61,7 +60,7 @@
         select * from board_tb where id = #{id}
     </select>
 
-    <select id="findByIdJoinUser" resultType="shop.mtcoding.transferdto.dto.BoardDetailOutDto">
+    <select id="findByIdJoinUser" resultType="shop.mtcoding.transferdto.dto.BoardDetailOutFlatDto">
         select b.*, 
           u.id user_id, 
           u.username user_username, 

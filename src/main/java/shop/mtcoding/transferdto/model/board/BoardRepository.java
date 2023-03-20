@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import shop.mtcoding.transferdto.dto.BoardDetailOutDto;
+import shop.mtcoding.transferdto.dto.BoardDetailOutFlatDto ;
 import shop.mtcoding.transferdto.dto.BoardJoinUserDto;
-import shop.mtcoding.transferdto.dto.BoardJoinUserDto2;
+import shop.mtcoding.transferdto.dto.BoardJoinUserDtoV2;
 
 @Mapper
 public interface BoardRepository {
@@ -21,10 +21,10 @@ public interface BoardRepository {
 
     public Board findById(int id);
 
-    public BoardDetailOutDto findByIdJoinUser(int id);
+    public BoardDetailOutFlatDto findByIdJoinUser(Integer id);
 
-    public BoardJoinUserDto findByIdJoinUser2(int id);
+    public BoardJoinUserDto findByIdJoinUser2(Integer id);
 
-    public BoardJoinUserDto2 findByIdJoinUser3(int id);
+    public BoardJoinUserDtoV2 findByIdJoinUser3(Integer id);
     
 }
